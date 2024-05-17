@@ -16,20 +16,22 @@ Jednostka naukowa dostaje punkty za każdą pracę opublikowaną przez osoby afi
 Oczywiście dla każdej pracy liczy się punktacja za konferencję ważna w dzień publikacji oraz jednostka autora podana przy tej pracy.
 
 Twoim zadaniem jest wykonanie następującego API:
-1. dodawanie prac (json: data/tytuł/konferencja/autorzy - każdy z podaną jednostką) - może oznaczać zmianę afiliacji dla danego autora
-2. zmiana punktacji konferencji (json: konferencja, data, nowa liczba punktów) - należy przygotować się na częste zmiany tej punktacji :)
-3. lista jednostek z przypisaną punktacją za publikacje w podanym przedziale dat (posortowane malejąco wg liczby punktów)
-4. lista autorów z przypisaną sumaryczną punktacją za publikacje w podanym przedziale dat (liczą się pełne punkty za każdą konferencję)
+1. dodawanie prac (może oznaczać zmianę afiliacji dla danego autora),
+2. zmiana punktacji konferencji (należy przygotować się na częste zmiany tej punktacji),
+3. wyliczenie listy jednostek z sumaryczną punktacją za publikacje w podanym przedziale dat (posortowane malejąco wg liczby punktów),
+4. wyliczenie listy autorów z przypisaną sumaryczną punktacją za publikacje w podanym przedziale dat (liczą się pełne punkty za każdą konferencję),
+5. wyliczenie szczegółowego dorobku podanego autora.
+
 Specyfikacja techniczna dla każdej operacji jest podana poniżej.
 
 Dane nie będą sprzeczne (w szczególności nie będzie dwóch prac tego samego autora w ten sam dzień z różnymi afiliacjami) ale może się zdarzyć, ze prace nie są dodawane w kolejności chronologicznej.
-
+Funkcje są zawsze wywoływane z poprawnymi parametrami, odpowiednich typów, zgodnie ze specyfikacją poniżej.
 
 *Uwaga: to są znacznie uproszczone zasady ewaluacji, zainteresowani mogą zapoznać się z odpowiednim [rozporządzeniem](https://isap.sejm.gov.pl/isap.nsf/download.xsp/WDU20220000661/O/D20220661.pdf)*.
 
 ### Co będzie oceniane?
 
-**Model konceptualny** - powinien składać się z diagramu E-R, komentarza zawierającego więzy pominięte w diagramie, oraz opisu ról wraz z funkcjonalnościami (zgodnie ze specyfikacją poniżej).
+**Model konceptualny** - powinien składać się z diagramu E-R, komentarza zawierającego więzy pominięte w diagramie.
 
 **Model fizyczny** - powinien być plikiem sql nadającym się do czytania (i oceny) przez człowieka. Powinien zawierać definicję wszystkich niezbędnych użytkowników bazy i ich uprawnień, tabel, więzów, indeksów, kluczy, akcji referencyjnych, funkcji, perspektyw i wyzwalaczy. Nie jest niezbędne wykorzystanie wszystkich tych udogodnień, ale tam, gdzie pasują, powinny być wykorzystywane.
 
@@ -42,7 +44,7 @@ Projekty należy przygotować indywidualnie.
 
 ### Technologie
 
-System Linux. Język programowania dowolny – wybór wymaga zatwierdzenia przez prowadzącego pracownię. Twój program po uruchomieniu będzie mógł się podłączyć do uruchomionej już w systemie pustej bazy danych PostgreSQL (w wersji >=13, dokładna wersja będzie podana potem).
+Projekty będą testowane w systemie Linux (Ubuntu 22.04.4 LTS). Język programowania  – zalecany python 3.  Wybór innego języka wymaga zatwierdzenia przez prowadzącego pracownię. Twój program po uruchomieniu będzie mógł się podłączyć do uruchomionej już w systemie pustej bazy danych PostgreSQL (w wersji >=13, dokładna wersja będzie podana potem).
 
 Twój program po uruchomieniu powinien przeczytać ze standardowego wejścia ciąg wywołań funkcji API, a wyniki ich działania wypisać na standardowe wyjście.
 
@@ -56,7 +58,7 @@ Przykład: obiekt `{ "function": { "arg1": "val1", "arg2": "val2" } }` oznacza w
 
 W pierwszej linii wejścia znajduje się wywołanie funkcji open z argumentami umożliwiającymi nawiązanie połączenia z bazą danych.
 
-Przykładowe wejście
+**Przykładowe wejście**
 
 ```
 { "open": { "host": "localhost", "baza": "student", "login": "student", "password": "qwerty"}}
@@ -66,7 +68,7 @@ Przykładowe wejście
 { "function4": { } }
 ```
 
-Format wyjścia
+**Format wyjścia**
 
 Dla każdego wywołania wypisz w osobnej linii obiekt JSON zawierający status wykonania funkcji OK/ERROR/NOT IMPLEMENTED oraz zwracane dane wg specyfikacji tej funkcji.
 
@@ -83,7 +85,7 @@ Format zwracanych danych (dla czytelności zawiera zakazane znaki nowej linii):
 
 Tabela `data` zawiera wszystkie wynikowe krotki. Każda krotka zawiera wartości dla wszystkich atrybutów.
 
-Przykładowe wyjście
+**Przykładowe wyjście**
 
 ```
 { "status": "OK" }
@@ -106,7 +108,7 @@ Przykładowe wyjście
 
 Należy oddać samodzielnie napisany program implementujący wszystkie funkcje, dokumentację (zawierającą model konceptualny) oraz model fizyczny.
 
-Nawiązywanie połączenia i definiowanie nowych użytkowników
+### Nawiązywanie połączenia i definiowanie nowych użytkowników
 
 ```
 open <host> <baza> <login> <password>
@@ -133,6 +135,8 @@ deluser <secret> <login>
 ### Operacje modyfikujące bazę
 
 Każde z poniższych wywołań powinno zwrócić obiekt JSON zawierający wyłącznie status wykonania: OK/ERROR/NOT IMPLEMENTED.
+Wywołania z podanym niepoprawnymi wartościami `<login> <password>` muszą zwrócić status ERROR i nie mogą się wykonać.
+W przypadku gdy nie zaimplmentowaliście jakiejś funkcji (nie zalecane) jej wywołanie musi zwrócić status NOT IMPLEMENTED.
 
 
 1. dodawanie prac (json: data/tytuł/konferencja/autorzy z afiliacjami) - może oznaczać zmianę afiliacji dla danego autora
