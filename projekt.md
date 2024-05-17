@@ -202,7 +202,8 @@ author <start_date> <end_date>
 author_details <author>
 // zwraca listę publikacji podanego autora 
 // (pogrupowaną wg konferencji i posortowaną malejąco 
-// wg liczby punktów przypisanej obecnie danej konferencji)
+// wg liczby punktów przypisanej obecnie danej konferencji, 
+// a wewnątrz grupy alfabetycznie tytułami)
 
 // Atrybuty zwracanych krotek: 
 //   <conference> <year> <number of points> <institution>  <title>
