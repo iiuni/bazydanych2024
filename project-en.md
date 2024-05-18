@@ -6,9 +6,9 @@
 
 Scientists write scientific papers published at conferences.
 
-Each conference is assigned a number of points awarded for each paper published at it: 200, 140, 100, 70, or 20.
-The points for a given conference can change over time (but not more than once a day).
-Papers have a publication date, title, list of authors, and conference, and each author of a given paper is associated with a research unit (affiliation). In each published paper of a given author, the affiliation can be different. We assume that if the author has a different affiliation in the paper than in any previous work, there was a change of affiliation - effective from the publication date of the new paper.
+Each conference is assigned a number of points that is awarded to each paper published at it: 200, 140, 100, 70, or 20.
+The points for a given conference can change over time (but not more often than once a day).
+Papers have a publication date, title, list of authors, and conference; each author of a given paper is associated with a research unit (affiliation). In each published paper of a given author, the affiliation can be different. We assume that if the author has a different affiliation in one paper than in any previous work, there was a change of affiliation - effective from the publication date of the new paper.
 A research unit gets points for each paper published by people affiliated with that unit. Points are awarded as follows:
 1. For papers worth 200, 140, and 100 points - the unit receives the full points for the paper, even if the paper also has co-authors from outside the unit.
 2. For papers worth 70 points - *70\*sqrt(k/m)*, where *k* is the number of authors from the given unit, *m* is the total number of authors; but not less than 7 points, rounded to 4 decimal places.
@@ -17,7 +17,7 @@ A research unit gets points for each paper published by people affiliated with t
 Of course, for each paper, the points for the conference on the day of publication and the author's unit stated in the paper are taken into account.
 
 Your task is to implement the following API:
-1. Adding papers (which may mean changing the affiliation for a given author),
+1. Adding papers (which may also involve a change in the affiliation for a given author),
 2. Changing conference points (be prepared for frequent changes in these points),
 3. Calculating a list of units with total points for publications in a given date range (sorted in descending order by the number of points),
 4. Calculating a list of authors with assigned total points for publications in a given date range (considering full points for each conference),
@@ -28,7 +28,7 @@ The technical specification for each operation is given below.
 The data will not be inconsistent (in particular, there will not be two papers by the same author on the same day with different affiliations), but it may happen that papers are not added in chronological order.
 Functions are always called with correct parameters, of the appropriate types, as per the specification below.
 
-*Note: These are significantly simplified evaluation rules, interested parties can refer to the relevant [regulation](https://isap.sejm.gov.pl/isap.nsf/download.xsp/WDU20220000661/O/D20220661.pdf).*
+*Note: These are significantly simplified evaluation rules, if you are interested you can refer to the relevant [regulation](https://isap.sejm.gov.pl/isap.nsf/download.xsp/WDU20220000661/O/D20220661.pdf).*
 
 ### What will be evaluated?
 
@@ -49,7 +49,7 @@ Projects will be tested on a Linux system (Ubuntu 22.04.4 LTS). The recommended 
 
 Your program, upon running, should read a sequence of API function calls from standard input and print the results of their operation to standard output.
 
-All data should be stored in the database, and the effect of each function modifying the database, for which an execution confirmation (OK value) was printed, should be preserved. The program can be run multiple times, e.g., first reading a file with initial data, and then subsequent correctness tests. On the first run, the program should create all necessary database elements (tables, constraints, functions, triggers) according to the physical model prepared by the student. The database will not be modified between successive runs. The program will not have permissions to read, create, or write any files except for reading files from the current directory (e.g., the contents of the SQL file with the physical schema).
+All data should be stored in the database, and the effect of each function modifying the database, for which an execution confirmation (OK value) was printed, should be committed. The program can be run multiple times, e.g., first reading a file with initial data, and then subsequent correctness tests. On the first run, the program should create all necessary database elements (tables, constraints, functions, triggers) according to the physical model prepared by the student. The database will not be modified between successive runs. The program will not have permissions to read, create, or write any files except for reading files from the current directory (e.g., the contents of the SQL file with the physical schema).
 
 ### Input File Format
 
