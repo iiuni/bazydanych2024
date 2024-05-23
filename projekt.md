@@ -7,7 +7,7 @@
 Naukowcy piszą prace naukowe publikowane na konferencjach.
 
 Każda konferencja ma przypisaną liczbę punktów, którą przyznaje się za każdą opublikowaną na niej pracę: 200, 140, 100, 70 lub 20.
-Punktacja dla danej konferencji może się zmieniać w czasie (ale nie częściej niż raz dziennie).
+Punktacja dla danej konferencji może się zmieniać w czasie (ale jest stała w ciągu każdego dnia).
 Prace mają datę publikacji, tytuł, listę autorów i konferencję, a każdy autor danej pracy ma przypisaną jedną jednostkę naukową (afiliację). W każdej opublikowanej pracy danego autora afiliacja może być inna. Zakładamy, że jeśli autor ma podaną w pracy inną afiliację niż w jakiejś wcześniejszej pracy, to nastąpiła zmiana afiliacji - obowiązująca od daty publikacji nowej pracy.
 Jednostka naukowa dostaje punkty za każdą pracę opublikowaną przez osoby afiliowane przy tej jednostce. Punkty są przydzielane następująco:
 1. w pracach za 200, 140 i 100 punktów - jednostka otrzymuje całość punktów za pracę, nawet jeśli praca ma również współautorów spoza tej jednostki.
@@ -166,54 +166,6 @@ points <login> <password> <date> <points_list>
 // <conference> jednoznacznie identyfikuje konferencję,
 // <points> liczba punktów przyznana konferencji
 
-```
-
-### Pozostałe operacje
-
-Każde z poniższych wywołań powinno zwrócić obiekt JSON zawierający status wykonania OK/ERROR, a także tabelę data zawierającą krotki wartości atrybutów wg specyfikacji poniżej.
-
-
-1. lista jednostek z przypisaną punktacją za publikacje w podanym przedziale dat (posortowane malejąco wg liczby punktów)
-
-```
-institution <start_date> <end_date> 
-
-// zwraca listę jednostek wraz z punktacją za publikacje
-// w podanym przedziale dat (posortowane malejąco wg liczby punktów)
-//
-// Atrybuty zwracanych krotek: 
-//  <institution> <number of points>
-```
-
-2. lista autorów z przypisaną sumaryczną punktacją za publikacje w podanym przedziale dat (w postaci sumy pełnej liczby punktów przypisanych każdej konferencji, na której dana osoba opunlikowała pracę)
-
-```
-author <start_date> <end_date> 
-// zwraca listę autorów wraz z punktacją za publikacje 
-// w podanym przedziale dat (posortowane malejąco wg liczby punktów)
-//
-// Atrybuty zwracanych krotek: 
-//  <author> <number of points>
-
-```
-
-3. szczegółowy dorobek danego autora
-
-```
-author_details <author>
-// zwraca listę publikacji podanego autora 
-// (pogrupowaną wg konferencji i posortowaną malejąco 
-// wg liczby punktów przypisanej obecnie danej konferencji, 
-// a wewnątrz grupy alfabetycznie tytułami)
-
-// Atrybuty zwracanych krotek: 
-//   <conference> <year> <number of points> <institution>  <title>
-// gdzie 
-//   <conference> identyfikuje jednoznacznie koferencję
-//   <year> rok opublikowania pracy
-//   <number of points> liczba punktów przypisana podanej konferencji w momencie publikacji danej pracy
-//   <institution> afiliacja autora w momencie publikacji danej pracy
-//   <title> tytuł pracy
 ```
 
 ### Pozostałe operacje

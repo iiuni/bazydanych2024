@@ -7,7 +7,7 @@
 Scientists write scientific papers published at conferences.
 
 Each conference is assigned a number of points awarded for each paper published at it: 200, 140, 100, 70, or 20.
-The points for a given conference can change over time (but not more than once a day).
+The points for a given conference can change over time (but they are constant throughout the day).
 Papers have a publication date, title, list of authors, and conference, and each author of a given paper is associated with a research unit (affiliation). In each published paper of a given author, the affiliation can be different. We assume that if the author has a different affiliation in the paper than in any previous work, there was a change of affiliation - effective from the publication date of the new paper.
 A research unit gets points for each paper published by people affiliated with that unit. Points are awarded as follows:
 1. For papers worth 200, 140, and 100 points - the unit receives the full points for the paper, even if the paper also has co-authors from outside the unit.
