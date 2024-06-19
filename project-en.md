@@ -2,6 +2,11 @@
 
 **Please report any ambiguities, issues, or bugs. I reserve the right to make corrections to the content until Thursday, May 23, inclusive.**
 
+- You can use the Dockerfile and docker-compose.yml that I prepared before the SQL lab (links on the intranet)
+- Scoring: conceptual model 20%, physical model 10%, each of the five functions 10%, and its documentation 4%
+- The minimum percentage required to pass the project is 40% (so, for example, you cannot submit only the model).
+
+
 ### Research Quality Evaluation System
 
 Scientists write scientific papers published at conferences.
