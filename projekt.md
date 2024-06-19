@@ -2,6 +2,11 @@
 
 **Proszę o zgłoszenia w przypadku niejasności, ew. problemów i usterek. Zastrzegam sobie prawo do wprowadzania poprawek w treści do czwartku 23 maja włącznie.**
 
+Ocenianie:
+- można użyć Dockerfile i docker-compose.yml, które przygotowałem przed pracownią SQL (linki na skosie)
+- punktacja: model konceptualny za 20%, fizyczny za 10%, każda z pięciu funkcji za 10% i jej dokumentacja za 4%
+- minimalny procent wymagany na zaliczenie projektu wynosi 40% (czyli np. nie można oddać samego modelu).
+
 ### System do ewaluacji jakości badań naukowych
 
 Naukowcy piszą prace naukowe publikowane na konferencjach.
